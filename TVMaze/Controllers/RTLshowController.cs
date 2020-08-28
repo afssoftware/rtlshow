@@ -36,7 +36,7 @@ namespace TVMaze.Controllers
             {
                 var query = await _context.RTLshows
                          .Include(c => c.Casts)
-                         .ToList();
+                         .ToListAsync();
                 //User JsonConvert 
                 //return Content(JsonConvert.SerializeObject(query));
                 return query;
