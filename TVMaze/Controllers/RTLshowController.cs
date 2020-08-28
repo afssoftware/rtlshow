@@ -6,6 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using TVMaze.DataAccess;
 using TVMaze.Models;
+using System.Net;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace TVMaze.Controllers
 {
@@ -26,11 +30,11 @@ namespace TVMaze.Controllers
         }
 
         [HttpGet]
-        public List<RTLshow> Get()
+        public async Task <List<RTLshow>> Get()
         {
             try
             {
-                var query = _context.RTLshows
+                var query = await _context.RTLshows
                          .Include(c => c.Casts)
                          .ToList();
                 //User JsonConvert 
